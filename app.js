@@ -46,10 +46,9 @@ form.addEventListener('submit', (e) => {
     
     // Hint -- create the object from the form, push it onto the stats array, then call renderStats
     stats.push(player);
-    console.log('list of stats', stats)
+    console.log('list of stats', stats);
 
     renderStats();
-    
 });
 
 remove.addEventListener('click', () => {
@@ -62,9 +61,22 @@ remove.addEventListener('click', () => {
 
 save.addEventListener('click', () => {
     // Step 3 - add code to allow users to save the state
+    let totalPoints = 0;
+    for (let stat of stats) {
+        let gamePoint = Number(stat.points);
+        totalPoints += gamePoint;
+    }
     // Loop through the list of stats and add up the total points scored
     // Create a new object with the game number and the total points
     // { number: games.length + 1, totalPoints: totalPoints }
+    let game = {
+        number: games.length + 1,
+        totalPoints: totalPoints
+    };
     // Push the new object onto the games array then call renderGames
+    console.log(game);
+    games.push(game);
+    renderGames();
     // reset the stats with resetStats
+    resetStats();
 });
